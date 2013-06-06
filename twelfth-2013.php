@@ -96,8 +96,51 @@ $remove3 = "</font></td>
 //$error isliye h ki koi result 
 $error = "Result Not Found";
 $namestring = "size=2> <b>";
-
-
+function outputName($index,$result)
+{
+    for($i=0;$result[$i+$index]!="<";$i++)
+    {
+        $name[$i] = $result[$i+$index];
+    }
+	echo implode($name).'<br>';
+    unset($name); 
+    return $i+$index;
+}
+function updatePointer($index,$result)
+{
+    for($i=0;$result[$i+$index]!="<";$i++);
+    return $i+$index;
+}
+function outputSubCode($index,$result)
+{
+    for($i=0;$result[$i+$index]!="<";$i++)
+    {
+        $name[$i] = $result[$i+$index];
+    }
+	echo implode($name).'<br>';
+    unset($name);
+    return $i+$index;
+}
+function outputSubName($index,$result)
+{
+    for($i=0;$result[$i+$index]!="<";$i++)
+    {
+        $name[$i] = $result[$i+$index];
+    }
+	echo implode($name).'<br>';
+    unset($name); 
+    return $i+$index;
+}
+function outputMarks($index,$result)
+{
+    for($i=0;$i<3;$i++)
+    {
+        $marks[$i] = $result[$i+$index];
+    }    
+	echo implode($marks).'<br>';
+    unset($marks); 
+    return updatePointer($index, $result);
+}
 for ($rollno = 1600001; $rollno < 1600100; ++$rollno) {  // from which roll no to which roll no 
 	
 	$logindata = array(
@@ -115,157 +158,39 @@ for ($rollno = 1600001; $rollno < 1600100; ++$rollno) {  // from which roll no t
 	//$result contains complete source code of result. Mining isme kerni h !!
 	$result = curl_exec($handle);
 	$index = 2840;
-	for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $name[$i] = $result[$i+$index];
-    }
+	$index = outputName($index,$result)+145;    //Student name
+    $index = outputName($index,$result)+133;    //Father Name
+    $index = outputName($index,$result)+708;    //Mother Name
+    //agar kisi info ko output nahi karna hai toh usko updatePointer se replace karde
     
-    echo implode($name).'<br>';
-    unset($name);
-    $index = $i+$index+145;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $name[$i] = $result[$i+$index];
-    }
-	echo implode($name).'<br>';
-    unset($name);
-    $index = $i+$index+133;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $name[$i] = $result[$i+$index];
-    }
-	echo implode($name).'<br>';
-    unset($name);
-    $index = $i+$index+708;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $subcode[$i] = $result[$i+$index];
-    }
-	echo implode($subcode).'<br>';
-    unset($subcode);
-    $index = $i+$index+62;
-    for($i=0;$result[$i+$index]!="<";$i++);
-    $index = $i+$index+62;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $marks[$i] = $result[$i+$index];
-    }
-	echo implode($marks).'<br>';
-    unset($marks);
-   $index = $i+$index+166;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $subcode[$i] = $result[$i+$index];
-    }
-	echo implode($subcode).'<br>';
-    unset($subcode);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $marks[$i] = $result[$i+$index];
-    }
-	echo implode($marks).'<br>';
-    unset($marks);
-    $index = $i+$index+165;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $subcode[$i] = $result[$i+$index];
-    }
-	echo implode($subcode).'<br>';
-    unset($subcode);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $marks[$i] = $result[$i+$index];
-    }
-	echo implode($marks).'<br>';
-    unset($marks);
-    $index = $i+$index+165;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $subcode[$i] = $result[$i+$index];
-    }
-	echo implode($subcode).'<br>';
-    unset($subcode);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $marks[$i] = $result[$i+$index];
-    }
-	echo implode($marks).'<br>';
-    unset($marks);
-    $index = $i+$index+165;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $subcode[$i] = $result[$i+$index];
-    }
-	echo implode($subcode).'<br>';
-    unset($subcode);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $marks[$i] = $result[$i+$index];
-    }
-	echo implode($marks).'<br>';
-    unset($marks);
-    $index = $i+$index+165;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $subcode[$i] = $result[$i+$index];
-    }
-	echo implode($subcode).'<br>';
-    unset($subcode);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $marks[$i] = $result[$i+$index];
-    }
-	echo implode($marks).'<br>';
-    unset($marks);
-    $index = $i+$index+167;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $subcode[$i] = $result[$i+$index];
-    }
-	echo implode($subcode).'<br>';
-    unset($subcode);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $marks[$i] = $result[$i+$index];
-    }
-	echo implode($marks).'<br>';
-    unset($marks);
-    $index = $i+$index+168;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $subcode[$i] = $result[$i+$index];
-    }
-	echo implode($subcode).'<br>';
-    unset($subcode);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++);
-    $index = $i+$index+61;
-    for($i=0;$result[$i+$index]!="<";$i++)
-    {
-        $marks[$i] = $result[$i+$index];
-    }
-	echo implode($marks).'<br>';
-    unset($marks);
+
+    //Subcode , Subname and marks of each subject
+    $index = outputSubCode($index,$result)+62;
+    $index = outputSubName($index,$result)+62;
+    $index = outputMarks($index,$result)+166;
+    $index = outputSubCode($index,$result)+61;
+    $index = outputSubName($index,$result)+61;
+    $index = outputMarks($index,$result)+165;
+    $index = outputSubCode($index,$result)+61;
+    $index = outputSubName($index,$result)+61;
+    $index = outputMarks($index,$result)+165;
+    $index = outputSubCode($index,$result)+61;
+    $index = outputSubName($index,$result)+61;
+    $index = outputMarks($index,$result)+165;
+    $index = outputSubCode($index,$result)+61;
+    $index = outputSubName($index,$result)+61;
+    $index = outputMarks($index,$result)+165;
+    $index = outputSubCode($index,$result)+61;
+    $index = outputSubName($index,$result)+61;
+    $index = outputMarks($index,$result)+167;
+    $index = outputSubCode($index,$result)+61;
+    $index = outputSubName($index,$result)+61;
+    $index = outputMarks($index,$result)+168;
+    $index = outputSubCode($index,$result)+61;
+    $index = outputSubName($index,$result)+61;
+    $index = outputMarks($index,$result);
     
-	curl_close($handle);
+    curl_close($handle);
 }
 
 ?>
